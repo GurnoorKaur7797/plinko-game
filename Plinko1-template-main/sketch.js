@@ -15,7 +15,7 @@ function setup() {
   ground = new Ground(width/2,height,width,20);
 
   //create division objects
-  for (var k = 0; k <=100; k = k + 80) {
+  for (var k = 0; k <=width; k = k + 80) {
     divisions.push(new Divisions(k, height-divisionHeight/2, 10, divisionHeight));
   }
 
@@ -44,9 +44,7 @@ function setup() {
   }
 
   //create particle objects
-  if(frameCount%60===0){
-    particles.push(new Particles(random (width/2-10, width/2+10), 10, 10));
-  }
+  
     
 }
  
@@ -69,6 +67,12 @@ function draw() {
     divisions[k].display();
   }
 
-  //display the paricles 
-  
+  //creating the paricles 
+  if(frameCount%60===0){
+    particles.push(new Particle(random (width/2-10, width/2+10), 10, 10));
+  }
+
+  for (var j = 0; j < particles.length; j++) {
+    particles[j].display();
+  }
 }
